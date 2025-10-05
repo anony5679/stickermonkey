@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Custom Stickers & Labels</title>
+    <meta name="description" content="Make your own stickers and labels. Sample packs, custom packs, bottle stickers, and label products." />
+    <!-- Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <a class="brand" href="/">
+          <img 
+          src="./stickermonkey.png" 
+          alt="MonkeySticker Logo" 
+          style="height: 100px; width:auto; display:block;"/>
+        </a>
+
+
+        <ul id="primary-menu" class="nav-links">
+          <li><a href="./stickers.html">Stickers</a></li>
+          <li><a href="#labels">Labels</a></li>
+          <li><a href="#materials">Materials</a></li>
+          <li><a href="./editor.html">editor</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1 class="hero-title text-balance">Make Your Own Stickers and Labels</h1>
+            <p class="hero-desc">
+              <b>make your customize stickers and we make you happy by our  creativity.</b>
+              <b>come and shop stickers for you </b>
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="./stickers.html">Create Stickers</a>
+              <a class="hero-link" href="./stickers.html" aria-label="View all sticker products">All Stickers Product</a>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-sticker"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4-column products -->
+      <section class="section" aria-labelledby="section-products">
+        <div class="container">
+          <h2 id="section-products" class="section-title">Popular Products</h2>
+          <div class="grid-4">
+            <article class="card">
+              <img src="https://stickerapp.nl/media/450x450/3db0087861/new-sample-pack-single-stacked-standing-white-bg-450x450.jpg/m/400x0/filters:quality(60)" alt="Assorted sample sticker pack" class="card-img" />
+              <div class="card-body">
+                <h3 class="card-title">Sample Pack</h3>
+                <p class="card-text">Try a curated set of finishes and materials to feel the quality.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="https://stickerapp.nl/media/1000x1000/523d27371c/custom-stickerpack-creativepain-stacked-white-1000x1000.jpeg/m/400x0/filters:quality(60)" alt="Custom sticker pack spread out on a table" class="card-img" />
+              <div class="card-body">
+                <h3 class="card-title">Custom Sticker Pack</h3>
+                <p class="card-text">Upload your designs and get a mixed pack in your favorite materials.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="https://stickerapp.nl/media/500x500/5b5affefc9/custom-repair-shop-uv-dtf-transfer-sticker-icon-11-500x500.png/m/400x0/filters:quality(60)" alt="Bottle featuring a custom sticker" class="card-img" />
+              <div class="card-body">
+                <h3 class="card-title">Bottle Stickers</h3>
+                <p class="card-text">Durable, water-resistant stickers perfect for bottles and containers.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="https://stickerapp.nl/media/500x500/29adbe585c/popular-labels-on-roll-single-500x500.jpg/m/400x0/filters:quality(60)" alt="Roll of printed labels" class="card-img" />
+              <div class="card-body">
+                <h3 class="card-title">Labels</h3>
+                <p class="card-text">High-quality labels for products, packaging, and branding.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Make Your Own Product -->
+      <section class="section" aria-labelledby="section-make" id="labels">
+        <div class="container">
+          <div class="title-with-highlight">
+            <span class="highlight">Make Your Own Product</span>
+          </div>
+          <p class="section-subtitle">
+            Choose your size, shape, and material. Our easy flow lets you customize quickly and preview your results.
+          </p>
+
+          <div class="row-2">
+            <div class="pane">
+              <h3 class="pane-title">Start from Template</h3>
+              <p class="pane-text">Pick a ready-made layout and tweak colors, text, and icons to suit your brand.</p>
+              <a class="btn btn-outline" href="./stickers.html">Browse Templates</a>
+            </div>
+            <div class="pane">
+              <h3 class="pane-title">Upload Your Design</h3>
+              <p class="pane-text">Already have artwork? Upload your file and we’ll take care of the rest.</p>
+              <a class="btn btn-outline" href="./stickers.html">Upload File</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Materials -->
+      <section class="section" aria-labelledby="section-materials" id="materials">
+        <div class="container">
+          <h2 id="section-materials" class="section-title">Choose Materials</h2>
+          <div class="materials-scroll" role="list" aria-label="Materials list">
+            <!-- JS will append material cards here -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+  
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <!-- About Us -->
+      <div class="footer-section">
+        <h4>About Us</h4>
+        <p>monkeysticker helps you create custom stickers and labels for your products. Fast, easy, and high-quality prints.</p>
+        <a href="./about.html" class="footer-link">Learn More</a>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./stickers.html">Stickers</a></li>
+          <li><a href="#labels">Labels</a></li>
+          <li><a href="#materials">Materials</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: support@monkeysticker.com</p>
+        <p>Phone: +91 98765 43210</p>
+      </div>
+
+      <!-- Social Links -->
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <ul class="social-links">
+          <li><a href="#" aria-label="Facebook">Facebook</a></li>
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="Twitter">Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> monkeysticker. All rights reserved.</p>
+      <a href="#hero" class="back-to-top">Back to top</a>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="page-title">Material Details</title>
+    <meta name="description" content="Material detail with carousel, upload, pricing, reviews, and cart." />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      :root {
+        --primary-color: #4a6cf7;
+        --secondary-color: #6c757d;
+        --accent-color: #ff6b6b;
+        --light-bg: #f8f9fa;
+        --dark-text: #212529;
+        --border-color: #dee2e6;
+        --yellow-bg: #FFD700;
+        --yellow-dark: #FFC107;
+      }
+      
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+      }
+      
+      .site-header {
+        background: var(--yellow-bg);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      
+      .navbar {
+        padding: 1rem 0;
+      }
+      
+      .brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--dark-text) !important;
+        text-decoration: none;
+      }
+      
+      .nav-links a {
+        color: var(--dark-text) !important;
+        font-weight: 500;
+        margin: 0 0.5rem;
+        text-decoration: none;
+      }
+      
+      .nav-links a:hover {
+        color: var(--primary-color) !important;
+      }
+      
+      .material-hero {
+        background: var(--yellow-bg);
+        color: var(--dark-text);
+        padding: 4rem 0;
+        text-align: center;
+        border-bottom: 3px solid var(--yellow-dark);
+      }
+      
+      .material-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      
+      .material-sub {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      .section {
+        padding: 4rem 0;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--dark-text);
+      }
+      
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--secondary-color);
+        margin-bottom: 2rem;
+      }
+      
+      .carousel-viewport {
+        width: 100%;
+        height: 400px;
+        background: var(--light-bg);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      
+      .carousel-viewport img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      
+      .carousel-controls {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      
+      .btn {
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-outline {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+      }
+      
+      .btn-outline:hover {
+        background: var(--primary-color);
+        color: white;
+      }
+      
+      .btn-primary {
+        background: var(--primary-color);
+        border: none;
+        color: white;
+      }
+      
+      .btn-primary:hover {
+        background: #3a5bf5;
+        transform: translateY(-2px);
+      }
+      
+      .material-panel {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+      
+      .material-block {
+        margin-bottom: 2rem;
+      }
+      
+      .block-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--dark-text);
+      }
+      
+      .block-text {
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+      }
+      
+      .features-list {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .features-list li {
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+      }
+      
+      .features-list li::before {
+        content: "✓";
+        color: var(--primary-color);
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+      
+      .form-row {
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: var(--dark-text);
+      }
+      
+      .form-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+      
+      .form-input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+      }
+      
+      .upload-preview {
+        width: 100%;
+        height: 200px;
+        background: var(--light-bg);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+      }
+      
+      .upload-preview img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+      
+      .info-media img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      
+      .pricing-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+      
+      .pricing-table th,
+      .pricing-table td {
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .pricing-table th {
+        background: var(--light-bg);
+        font-weight: 600;
+        color: var(--dark-text);
+      }
+      
+      .pricing-table .quantity-cell {
+        position: relative;
+      }
+      
+      .pricing-table input[type="checkbox"] {
+        transform: scale(1.3);
+        margin-right: 10px;
+      }
+      
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      
+      .review-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      }
+      
+      .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      
+      .review-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        margin-right: 1rem;
+      }
+      
+      .review-meta h5 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      
+      .review-meta p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+      }
+      
+      .review-content {
+        color: var(--secondary-color);
+        line-height: 1.6;
+      }
+      
+      .cart-items {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+      }
+      
+      .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      
+      .cart-item:last-child {
+        border-bottom: none;
+      }
+      
+      .cart-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 1rem;
+      }
+      
+      .cart-item-info {
+        flex: 1;
+      }
+      
+      .cart-item-title {
+        font-weight: 600;
+        margin: 0;
+      }
+      
+      .cart-item-price {
+        color: var(--primary-color);
+        font-weight: 700;
+      }
+      
+      .cart-total {
+        text-align: right;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 1rem 0;
+        padding-top: 1rem;
+        border-top: 2px solid var(--border-color);
+      }
+      
+      .cart-cta {
+        text-align: center;
+      }
+      
+      .site-footer {
+        background: var(--dark-text);
+        color: white;
+        padding: 4rem 0 2rem;
+        margin-top: 4rem;
+      }
+      
+      .footer-section h4 {
+        color: white;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+      }
+      
+      .footer-section p {
+        color: #adb5bd;
+        margin-bottom: 1rem;
+      }
+      
+      .footer-link,
+      .footer-links-list a,
+      .social-links a {
+        color: #adb5bd !important;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      
+      .footer-link:hover,
+      .footer-links-list a:hover,
+      .social-links a:hover {
+        color: white !important;
+      }
+      
+      .footer-links-list,
+      .social-links {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .footer-links-list li,
+      .social-links li {
+        margin-bottom: 0.5rem;
+      }
+      
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 2rem;
+        border-top: 1px solid #495057;
+        margin-top: 2rem;
+      }
+      
+      .back-to-top {
+        color: white !important;
+        text-decoration: none;
+      }
+      
+      @media (max-width: 768px) {
+        .material-title {
+          font-size: 2rem;
+        }
+        
+        .material-sub {
+          font-size: 1rem;
+        }
+        
+        .carousel-viewport {
+          height: 300px;
+        }
+        
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        
+        .footer-bottom {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+        
+        .split-2 {
+          flex-direction: column;
+        }
+        
+        .material-panel {
+          margin-top: 2rem;
+        }
+        
+        .pricing-table {
+          font-size: 0.9rem;
+        }
+        
+        .pricing-table th,
+        .pricing-table td {
+          padding: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg container">
+        <a class="brand" href="./index.html">monkeysticker</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primary-menu" aria-controls="primary-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="primary-menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="./stickers.html">Stickers</a></li>
+            <li class="nav-item"><a class="nav-link" href="./index.html#labels">Labels</a></li>
+            <li class="nav-item"><a class="nav-link" href="./index.html#materials">Materials</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main> 
+      <header class="material-hero">
+        <div class="container">
+          <h1 id="material-name" class="material-title text-balance">Material</h1>
+          <p id="material-sub" class="material-sub">Explore features, pricing, and examples.</p>
+        </div>
+      </header>
+      
+      <section class="section">
+        <div class="container">
+          <div class="row split-2">
+            <div class="col-lg-6">
+              <div class="carousel" aria-label="Product images carousel">
+                <div class="carousel-viewport" id="carousel-viewport" role="group" aria-roledescription="carousel">
+                  <img src="https://stickerapp.nl/media/1649x1319/31a6c96cab/die-cut-holographic-sticker-killeracid-1600x1300.jpg/m/1800x0/filters:quality(60)" alt="Material preview">
+                </div>
+                <div class="carousel-controls">
+                  <button class="btn btn-outline btn-icon" id="carousel-prev" aria-label="Previous image">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="btn btn-outline btn-icon" id="carousel-next" aria-label="Next image">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div> 
+            </div>
+            <div class="col-lg-6">
+              <aside class="material-panel">
+                <div class="material-block">
+                  <h2 class="block-title">About this material</h2>
+                  <p id="material-desc" class="block-text">High-quality material suited to your use case.</p>
+                  <ul id="material-features" class="features-list" aria-label="Features">
+                    <li>Waterproof and weather-resistant</li>
+                    <li>Vibrant, fade-resistant colors</li>
+                    <li>Precision die-cut edges</li>
+                    <li>Easy peel-and-stick application</li>
+                  </ul>
+                </div>
+
+                <div class="material-block">
+                  <h2 class="block-title">Customize</h2>
+                  <div class="form-row">
+                    <label for="upload-input" class="form-label">Upload picture</label>
+                    <input id="upload-input" type="file" accept="image/*" class="form-input" />
+                  </div>
+                  <div id="upload-preview-wrap" class="upload-preview" aria-live="polite">
+                    <img id="upload-preview" alt="Uploaded picture preview" />
+                  </div>
+
+                  <div class="form-row">
+                    <label for="qty-input" class="form-label">Quantity</label>
+                    <input id="qty-input" type="number" class="form-input" min="1" value="1" />
+                  </div>
+
+                  <button id="add-to-cart" class="btn btn-primary w-100">Add to Cart</button>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="section" aria-labelledby="info-title">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <h2 id="info-title" class="section-title">Material Information</h2>
+              <p id="info-text" class="section-subtitle">Durable quality, clean cuts, and vivid print fidelity for your designs.</p>
+              <p>Digital printing on premium vinyl material ensures your designs maintain their vibrancy and clarity. Perfect for both indoor and outdoor use, our materials are designed to withstand the elements while maintaining their adhesive properties.</p>
+            </div>
+            <div class="col-lg-6">
+              <div class="info-media">
+                <img src="https://d6ce0no7ktiq.cloudfront.net/images/attachment/2023/03/09/48e2c5c8c6ab57d013675b3b245daa2136e0c7cf.png" alt="Close-up of material texture" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="pricing-title">
+        <div class="container">
+          <h2 id="pricing-title" class="section-title">Pricing</h2>
+          <div class="pricing-wrap">
+            <table class="pricing-table" id="pricing-table" aria-describedby="pricing-title">
+              <thead>
+                <tr>
+                  <th scope="col">Size</th>
+                  <th scope="col">10 pcs</th>
+                  <th scope="col">50 pcs</th>
+                  <th scope="col">100 pcs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-size="2x2">
+                  <td>2" x 2"</td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="2x2" data-quantity="10" data-price="12.00">
+                    $12.00
+                  </td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="2x2" data-quantity="50" data-price="45.00">
+                    $45.00
+                  </td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="2x2" data-quantity="100" data-price="75.00">
+                    $75.00
+                  </td>
+                </tr>
+                <tr data-size="3x3">
+                  <td>3" x 3"</td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="3x3" data-quantity="10" data-price="18.00">
+                    $18.00
+                  </td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="3x3" data-quantity="50" data-price="65.00">
+                    $65.00
+                  </td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="3x3" data-quantity="100" data-price="110.00">
+                    $110.00
+                  </td>
+                </tr>
+                <tr data-size="4x4">
+                  <td>4" x 4"</td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="4x4" data-quantity="10" data-price="24.00">
+                    $24.00
+                  </td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="4x4" data-quantity="50" data-price="85.00">
+                    $85.00
+                  </td>
+                  <td class="quantity-cell">
+                    <input type="checkbox" class="quantity-checkbox" data-size="4x4" data-quantity="100" data-price="145.00">
+                    $145.00
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="reviews-title">
+        <div class="container">
+          <h2 id="reviews-title" class="section-title">Reviews & Examples</h2>
+          <div class="reviews-grid" id="reviews-grid">
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-avatar">JD</div>
+                <div class="review-meta">
+                  <h5>John Doe</h5>
+                  <p>⭐⭐⭐⭐⭐</p>
+                </div>
+              </div>
+              <div class="review-content">
+                "The quality exceeded my expectations! Colors are vibrant and the material feels premium. Will definitely order again."
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-avatar">SA</div>
+                <div class="review-meta">
+                  <h5>Sarah Adams</h5>
+                  <p>⭐⭐⭐⭐⭐</p>
+                </div>
+              </div>
+              <div class="review-content">
+                "Perfect for my small business branding. The stickers look professional and stick well to various surfaces."
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-header">
+                <div class="review-avatar">MR</div>
+                <div class="review-meta">
+                  <h5>Mike Rodriguez</h5>
+                  <p>⭐⭐⭐⭐</p>
+                </div>
+              </div>
+              <div class="review-content">
+                "Great quality and fast shipping. The only minor issue was slight color variation from screen, but still looks great!"
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="cart-title">
+        <div class="container">
+          <h2 id="cart-title" class="section-title">Cart</h2>
+          <div id="cart-items" class="cart-items">
+            <!-- Cart items will be added here dynamically -->
+            <p id="empty-cart-message">Your cart is empty. Select items from the pricing table above.</p>
+          </div>
+          <div class="cart-cta">
+            <button id="checkout-btn" class="btn btn-primary" disabled>Proceed to Checkout</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row footer-grid">
+          <!-- About Us -->
+          <div class="col-md-6 col-lg-3 footer-section">
+            <h4>About Us</h4>
+            <p>monkeysticker helps you create custom stickers and labels for your products. Fast, easy, and high-quality prints.</p>
+            <a href="./about.html" class="footer-link">Learn More</a>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-6 col-lg-3 footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links-list">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./stickers.html">Stickers</a></li>
+              <li><a href="#labels">Labels</a></li>
+              <li><a href="#materials">Materials</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div class="col-md-6 col-lg-3 footer-section">
+            <h4>Contact</h4>
+            <p>Email: support@monkeysticker.com</p>
+            <p>Phone: +91 98765 43210</p>
+          </div>
+
+          <!-- Social Links -->
+          <div class="col-md-6 col-lg-3 footer-section">
+            <h4>Follow Us</h4>
+            <ul class="social-links">
+              <li><a href="#" aria-label="Facebook">Facebook</a></li>
+              <li><a href="#" aria-label="Instagram">Instagram</a></li>
+              <li><a href="#" aria-label="Twitter">Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© <span id="year">2024</span> monkeysticker. All rights reserved.</p>
+          <a href="#hero" class="back-to-top">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Set current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Simple image upload preview
+      document.getElementById('upload-input').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            document.getElementById('upload-preview').src = e.target.result;
+          }
+          reader.readAsDataURL(file);
+        }
+      });
+      
+      // Cart functionality
+      let cart = [];
+      const cartItemsContainer = document.getElementById('cart-items');
+      const emptyCartMessage = document.getElementById('empty-cart-message');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      
+      // Add event listeners to all checkboxes
+      document.querySelectorAll('.quantity-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          const size = this.dataset.size;
+          const quantity = parseInt(this.dataset.quantity);
+          const price = parseFloat(this.dataset.price);
+          
+          if (this.checked) {
+            // Add to cart
+            cart.push({
+              id: `${size}-${quantity}`,
+              size: size,
+              quantity: quantity,
+              price: price,
+              total: price
+            });
+          } else {
+            // Remove from cart
+            cart = cart.filter(item => item.id !== `${size}-${quantity}`);
+          }
+          
+          updateCartDisplay();
+        });
+      });
+      
+      function updateCartDisplay() {
+        if (cart.length === 0) {
+          cartItemsContainer.innerHTML = '<p id="empty-cart-message">Your cart is empty. Select items from the pricing table above.</p>';
+          checkoutBtn.disabled = true;
+          return;
+        }
+        
+        let cartHTML = '';
+        let total = 0;
+        
+        cart.forEach(item => {
+          total += item.total;
+          cartHTML += `
+            <div class="cart-item">
+              <img src="https://placehold.co/60x60/4a6cf7/white?text=${item.size}" alt="Sticker ${item.size}">
+              <div class="cart-item-info">
+                <h4 class="cart-item-title">Custom Sticker ${item.size.replace('x', '" x ')}"</h4>
+                <p>Quantity: ${item.quantity} pcs</p>
+                <p class="cart-item-price">$${item.total.toFixed(2)}</p>
+              </div>
+            </div>
+          `;
+        });
+        
+        cartHTML += `<div class="cart-total">Total: $${total.toFixed(2)}</div>`;
+        cartItemsContainer.innerHTML = cartHTML;
+        checkoutBtn.disabled = false;
+      }
+      
+      // Add to cart button functionality (for uploaded design)
+      document.getElementById('add-to-cart').addEventListener('click', function() {
+        const quantityInput = document.getElementById('qty-input');
+        const quantity = parseInt(quantityInput.value) || 1;
+        const size = "Custom"; // Since it's a custom upload
+        
+        // For demo purposes, we'll use a base price
+        let price = 0;
+        if (quantity <= 10) price = 15.00;
+        else if (quantity <= 50) price = 55.00;
+        else price = 95.00;
+        
+        cart.push({
+          id: `custom-${quantity}`,
+          size: size,
+          quantity: quantity,
+          price: price,
+          total: price
+        });
+        
+        updateCartDisplay();
+        alert('Custom design added to cart!');
+      });
+      
+      // Checkout button
+      checkoutBtn.addEventListener('click', function() {
+        if (cart.length > 0) {
+          alert('Proceeding to checkout with ' + cart.length + ' item(s) in your cart!');
+        }
+      });
+      
+      // Carousel navigation (simplified)
+      let currentImage = 0;
+      const images = [
+          'https://stickerapp.nl/media/1649x1319/31a6c96cab/die-cut-holographic-sticker-killeracid-1600x1300.jpg/m/1800x0/filters:quality(60)',
+          'https://placehold.co/600x400/4a6cf7/white?text=Image+2',
+          'https://placehold.co/600x400/6a8cff/white?text=Image+3'
+        ];
+      
+      document.getElementById('carousel-next').addEventListener('click', function() {
+        currentImage = (currentImage + 1) % images.length;
+        document.getElementById('carousel-viewport').innerHTML = `<img src="${images[currentImage]}" alt="Material preview">`;
+      });
+      
+      document.getElementById('carousel-prev').addEventListener('click', function() {
+        currentImage = (currentImage - 1 + images.length) % images.length;
+        document.getElementById('carousel-viewport').innerHTML = `<img src="${images[currentImage]}" alt="Material preview">`;
+      });
+    </script>
+  </body>
+</html>
+```

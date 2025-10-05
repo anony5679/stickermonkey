@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Canvas Editor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+      <a class="brand" href="index.html">MONKEYSTICKERS</a>
+      <nav>
+        <a href="editor.html">Canvas Editor</a>
+        <a href="materials.html">Materials</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="editor-wrap">
+      <div class="panel card">
+        <h3>Tools</h3>
+        <div class="controls-row">
+          <button id="tool-select" class="tool-btn active">Select / Move</button>
+          <button id="tool-draw" class="tool-btn">Brush</button>
+          <button id="tool-erase" class="tool-btn">Eraser</button>
+        </div>
+
+        <h4 style="margin-top:12px;">Image</h4>
+        <input id="file-image" type="file" accept="image/*" class="input" />
+        <button id="btn-add-image" class="tool-btn">Add Image</button>
+        <button id="btn-remove-bg" class="tool-btn">Remove BG (selected)</button>
+
+        <h4 style="margin-top:12px;">Background</h4>
+        <input id="bg-color" type="color" value="#ffffff" class="input" />
+        <input id="bg-image-file" type="file" accept="image/*" class="input" style="margin-top:8px;" />
+        <button id="btn-set-bg" class="tool-btn">Set Background Image</button>
+        <button id="btn-clear-bg" class="tool-btn">Clear Background Image</button>
+
+        <h4 style="margin-top:12px;">Text</h4>
+        <input id="text-input" class="input" placeholder="Type text then Add" />
+        <div style="display:flex;gap:8px;margin-top:8px;">
+          <button id="btn-add-text" class="tool-btn">Add Text</button>
+          <button id="btn-edit-text" class="tool-btn">Edit Text</button>
+        </div>
+
+        <h4 style="margin-top:12px;">Brush</h4>
+        <label class="small">Size</label>
+        <input id="brush-size" type="range" min="1" max="80" value="6" />
+        <label class="small">Color</label>
+        <input id="brush-color" type="color" value="#000000" />
+
+        <h4 style="margin-top:12px;">Actions</h4>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button id="btn-undo" class="tool-btn">Undo</button>
+          <button id="btn-clear" class="tool-btn">Clear All</button>
+          <button id="btn-download" class="tool-btn">Download PNG</button>
+        </div>
+
+        <p class="small" style="margin-top:12px;">Tip: Select an image then click "Remove BG" to call the server proxy which uses remove.bg. Keep API key on server only.</p>
+        <div id="status" class="small" style="margin-top:8px;color:#333"></div>
+      </div>
+
+      <div class="canvas-holder card">
+        <canvas id="editor-canvas" width="1000" height="700"></canvas>
+      </div>
+
+      <div class="panel card">
+        <h3>Properties</h3>
+        <div class="small">Selected: <span id="sel-info">None</span></div>
+        <label class="small">Opacity</label>
+        <input id="prop-opacity" type="range" min="0" max="1" step="0.01" value="1" />
+        <label class="small" style="margin-top:8px;">Font Size</label>
+        <input id="prop-fontsize" type="number" class="input" value="28" />
+        <label class="small" style="margin-top:8px;">Font Color</label>
+        <input id="prop-fontcolor" type="color" value="#000000" />
+        <div style="display:flex;gap:8px;margin-top:8px;">
+          <button id="btn-bring" class="tool-btn">Bring Forward</button>
+          <button id="btn-send" class="tool-btn">Send Back</button>
+          <button id="btn-delete" class="tool-btn">Delete</button>
+        </div>
+
+        <label class="small" style="margin-top:12px;">Canvas Size</label>
+        <input id="canvas-w" class="input" type="number" value="1000" />
+        <input id="canvas-h" class="input" type="number" value="700" style="margin-top:6px;" />
+        <button id="btn-resize-canvas" class="tool-btn">Resize Canvas</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="editor-app.js"></script>
+</body>
+</html>
